@@ -1,0 +1,1 @@
+# CRUD_MERN initgit add README.mdgit commit -m first commitgit branch -M maingit remote add origin https://github.com/arjunrana12/CRUD_MERN.gitgit push -u origin main
