@@ -13,18 +13,27 @@ function Student() {
     }, []);
 
 
-    const handleDelete = (id) => {
-        axios.delete(`http://localhost:8081/delete/${id}`)
-          .then(res => {
-            if (res.data.success) {
-              // Update state to remove the deleted student
-              setStudents(prevStudents => prevStudents.filter(student => student.ID !== id));
-            } else {
-              console.log("Error deleting record:", res.data.message);
-            }
+    // const handleDelete = (id) => {
+    //     axios.delete(`http://localhost:8081/delete/${id}`)
+    //       .then(res => {
+    //         if (res.data.success) {
+    //           // Update state to remove the deleted student
+    //           setStudents(prevStudents => prevStudents.filter(student => student.ID !== id));
+    //         } else {
+    //           console.log("Error deleting record:", res.data.message);
+    //         }
+    //       })
+    //       .catch(err => console.log(err));
+    //   };
+
+        const handleDelete = (id) => {
+        axios.delete("http://localhost:8081/delete/"+id)
+        .then(res => { 
+             location.reload();
           })
-          .catch(err => console.log(err));
-      };
+        .catch(err => console.log(err))
+    }
+
 
     return (
         <div className='main-custom'>
