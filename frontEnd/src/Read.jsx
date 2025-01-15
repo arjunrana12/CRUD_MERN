@@ -28,7 +28,7 @@ useEffect(() => {
              <h3>Email : {student.Email}</h3>
           </div>
            <Link to="/" className='btn btn-primary me-2'>Back</Link>
-           <Link to={'/edit/${student.ID}'} className='btn btn-info'>Edit</Link>
+           <Link to={`/update/${student.ID}`} className='btn btn-info'>Edit</Link>
         </div>
         </div>
     </div>
