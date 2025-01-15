@@ -67,8 +67,8 @@ app.delete('/delete/:id', (req, res) => {
   const sql = "DELETE FROM student WHERE ID = ?";
   const id = req.params.id;
   
-  db.query(sql, [id], (res, result) => {
-    if(err) return res.json("error");
+  db.query(sql, [id], (err, result) => {
+    if(err) return res.json(err);
     return res.json(result);
   })
 })
