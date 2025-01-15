@@ -13,27 +13,15 @@ function Student() {
     }, []);
 
 
-    // const handleDelete = (id) => {
-    //     axios.delete(`http://localhost:8081/delete/${id}`)
-    //       .then(res => {
-    //         if (res.data.success) {
-    //           // Update state to remove the deleted student
-    //           setStudents(prevStudents => prevStudents.filter(student => student.ID !== id));
-    //         } else {
-    //           console.log("Error deleting record:", res.data.message);
-    //         }
-    //       })
-    //       .catch(err => console.log(err));
-    //   };
-
-        const handleDelete = (id) => {
-        axios.delete("http://localhost:8081/delete/"+id)
-        .then(res => { 
-             location.reload();
-          })
-        .catch(err => console.log(err))
-    }
-
+app.delete('/delete/:id', (req, res) => {
+  const sql = "DELETE FROM student WHERE ID = ?";
+  const id = req.params.id;
+  
+  db.query(sql, [id], (err, result) => {
+    if(err) return res.json(err);
+    return res.json(result);
+  })
+})
 
     return (
         <div className='main-custom'>
