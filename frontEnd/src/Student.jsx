@@ -13,15 +13,13 @@ function Student() {
     }, []);
 
 
-app.delete('/delete/:id', (req, res) => {
-  const sql = "DELETE FROM student WHERE ID = ?";
-  const id = req.params.id;
-  
-  db.query(sql, [id], (err, result) => {
-    if(err) return res.json(err);
-    return res.json(result);
-  })
-})
+ const handleDelete = (id) => {
+        axios.delete("http://localhost:8081/delete/"+id)
+        .then(res => { 
+             location.reload();
+          })
+        .catch(err => console.log(err))
+    }
 
     return (
         <div className='main-custom'>
